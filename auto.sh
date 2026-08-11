@@ -34,10 +34,10 @@ ENABLE_LIVOX_IMU="$(as_ros_bool "${ENABLE_LIVOX_IMU:-$ENABLE_LIVOX}")"
 ENABLE_REALSENSE_INPUT="${ENABLE_REALSENSE:-${ENABLE_DEPTH_CAMERA:-$ENABLE_SENSOR_DATA}}"
 ENABLE_REALSENSE="$(as_ros_bool "$ENABLE_REALSENSE_INPUT")"
 ENABLE_FRONT_CAMERA="$(as_ros_bool "${ENABLE_FRONT_CAMERA:-0}")"
-# Formal localization must not consume truth/referee odometry. The Unitree RL
-# controller still reads /ground_truth/base_w for its policy observation.
+# Formal runs keep truth/referee odometry disabled. The Unitree RL controller
+# uses /trunk_imu for its internal policy observation.
 ENABLE_REFEREE_ODOM="$(as_ros_bool "${ENABLE_REFEREE_ODOM:-0}")"
-ENABLE_GROUND_TRUTH="$(as_ros_bool "${ENABLE_GROUND_TRUTH:-1}")"
+ENABLE_GROUND_TRUTH="$(as_ros_bool "${ENABLE_GROUND_TRUTH:-0}")"
 ENABLE_FOOT_CONTACT_SENSOR="$(as_ros_bool "${ENABLE_FOOT_CONTACT_SENSOR:-0}")"
 ENABLE_FOOT_FORCE_VISUAL="$(as_ros_bool "${ENABLE_FOOT_FORCE_VISUAL:-0}")"
 ENABLE_JOY_NODE="$(as_ros_bool "${ENABLE_JOY_NODE:-0}")"
@@ -56,16 +56,6 @@ ROBOT_X="${ROBOT_X:-0.0}"
 ROBOT_Y="${ROBOT_Y:--3.2}"
 ROBOT_Z="${ROBOT_Z:-0.6}"
 ROBOT_YAW="${ROBOT_YAW:-1.5708}"
-
-# junior_ctrl's RL observation is fed by /ground_truth/base_w.  The formal
-# localization stack never subscribes to it, but disabling this publisher
-# while starting the controller makes mode 6 run with an uninitialised body
-# state and can immediately topple the robot.
-if [ "$START_CONTROLLER" = "1" ] && [ "$ENABLE_GROUND_TRUTH" != "true" ]; then
-  echo "START_CONTROLLER=1 requires ENABLE_GROUND_TRUTH=1 for junior_ctrl policy observation (/ground_truth/base_w)." >&2
-  echo "This does not enable referee odometry or localization use of ground truth." >&2
-  exit 2
-fi
 
 schedule_unpause_physics() {
   if [ "$AUTO_UNPAUSE" != "true" ]; then

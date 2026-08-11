@@ -68,7 +68,7 @@ ENABLE_SENSOR_DATA=0 ENABLE_LIVOX=1 ./auto.sh
 | `/set_door_state` | service | 门控制 |
 | `/call_elevator` | service | 电梯控制 |
 
-`junior_ctrl` 默认以前台方式启动。终端输入 `2` 进入站立状态，等待至少 4 秒并确认机体稳定后，输入 `4` 进入 RL 键盘行走模式，`W/S` 前后、`A/D` 左右、`J/L` 转向、空格停止；输入 `6` 切换到 RL `/cmd_vel` 模式。机器人摔倒后可输入 `8` 复位到出生点，再输入 `2` 重新站立。RL 控制器将 `/ground_truth/base_w` 用作内部策略观测，因此启动控制器时保持 `ENABLE_GROUND_TRUTH=1`；定位与导航不订阅该话题。完整接口见 [算法接入接口](docs/algorithm-interfaces.md)。
+`junior_ctrl` 默认以前台方式启动。终端输入 `2` 进入站立状态，等待至少 4 秒并确认机体稳定后，输入 `4` 进入 RL 键盘行走模式，`W/S` 前后、`A/D` 左右、`J/L` 转向、空格停止；输入 `6` 切换到 RL `/cmd_vel` 模式。机器人摔倒后可输入 `8` 复位到出生点，再输入 `2` 重新站立。RL 控制器使用 `/trunk_imu` 作为内部姿态观测，正式测试可保持 `ENABLE_GROUND_TRUTH=0`。完整接口见 [算法接入接口](docs/algorithm-interfaces.md)。
 
 ## 结果文件
 

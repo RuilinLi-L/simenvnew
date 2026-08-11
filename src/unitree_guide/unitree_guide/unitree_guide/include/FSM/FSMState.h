@@ -6,6 +6,7 @@
 
 #include <string>
 #include <iostream>
+#include <mutex>
 #include <unistd.h>
 #include "control/CtrlComponents.h"
 #include "message/LowlevelCmd.h"
@@ -63,6 +64,7 @@ protected:
 public:
     //cmd_vel callback function
     CmdVel current_cmd_vel_;
+    std::mutex cmd_vel_mutex_;
     void cmdVelCallback(const geometry_msgs::Twist::ConstPtr& cmd_msg);
     ros::NodeHandle nh;
     //声明订阅节点与发布节点

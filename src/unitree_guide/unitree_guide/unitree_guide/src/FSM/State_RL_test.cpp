@@ -271,9 +271,10 @@ void State_RL::updateCommandTensor(){
         return;
     }
 
-    commands_tensor[0] = this->current_cmd_vel_.linear_x;
-    commands_tensor[1] = this->current_cmd_vel_.linear_y;
-    commands_tensor[2] = this->current_cmd_vel_.angular_z;
+    std::lock_guard<std::mutex> guard(cmd_vel_mutex_);
+    commands_tensor[0] = finiteAxis(this->current_cmd_vel_.linear_x);
+    commands_tensor[1] = finiteAxis(this->current_cmd_vel_.linear_y);
+    commands_tensor[2] = finiteAxis(this->current_cmd_vel_.angular_z);
 }
 
 
@@ -283,15 +284,19 @@ void State_RL::refresh_rl_obs(){
     //gazebo simulation mode
     if (real == false)
     {
-        for (int i=0; i<4; i++) {
-            base_w_orientation[i] = _ctrlComp->ioInter->_base_w_ori[i];
-        }
+        // The policy only needs body attitude and angular velocity. Use the
+        // robot IMU instead of Gazebo's optional ground-truth odometry so the
+        // controller works with ENABLE_GROUND_TRUTH=0 in formal runs.
+        base_w_orientation[0] = _lowState->imu.quaternion[1];
+        base_w_orientation[1] = _lowState->imu.quaternion[2];
+        base_w_orientation[2] = _lowState->imu.quaternion[3];
+        base_w_orientation[3] = _lowState->imu.quaternion[0];
         for (int i=0; i<3; i++) {
-            base_w_angular_vel[i] = _ctrlComp->ioInter->_base_w_angular_vel[i];
+            base_w_angular_vel[i] = _lowState->imu.gyroscope[i];
         }
         torch::Tensor orientation_tensor = torch::from_blob(base_w_orientation.data(), {int64_t(base_w_orientation.size())}, opts).unsqueeze(0).clone();
         torch::Tensor w_angular_vel_tensor = torch::from_blob(base_w_angular_vel.data(), {int64_t(base_w_angular_vel.size())}, opts).unsqueeze(0).clone();
-        base_ang_vel_tensor = quat_rotate_inverse(orientation_tensor, w_angular_vel_tensor).squeeze().clone();
+        base_ang_vel_tensor = w_angular_vel_tensor.squeeze().clone();
         projected_gravity_tensor = quat_rotate_inverse(orientation_tensor, gravity_tensor.unsqueeze(0)).squeeze().clone();
         
         //订阅cmd_vel

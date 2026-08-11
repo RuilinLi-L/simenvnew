@@ -60,6 +60,7 @@ void FSMState::rosAbsoluteWait(long long startTime, long long waitTime){
 //设置cmd_vel的回调函数，将move_base转化为
 void FSMState::cmdVelCallback(const geometry_msgs::Twist::ConstPtr& msg){
    if (msg) {
+        std::lock_guard<std::mutex> guard(cmd_vel_mutex_);
         current_cmd_vel_.linear_x = msg->linear.x;
         current_cmd_vel_.linear_y = msg->linear.y;
         current_cmd_vel_.angular_z = msg->angular.z;
@@ -70,4 +71,3 @@ void FSMState::cmdVelCallback(const geometry_msgs::Twist::ConstPtr& msg){
     // std::cout << "cmd_vel_linear_y"<< this->current_cmd_vel_.linear_y<< std::endl;
     // std::cout << "cmd_vel_angular_z"<< this->current_cmd_vel_.angular_z<< std::endl;
 }
-
