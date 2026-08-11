@@ -1,0 +1,40 @@
+# Stage-1 navigation parameters. Keep all values conservative until the
+# controller has passed manual motion tests.
+
+cloud_to_scan:
+  input_cloud_topic: /scan
+  output_scan_topic: /nav/scan2d
+  # /nav/scan2d is the newest raw projected scan used by the safety stop.
+  # /nav/scan2d_stable is a short multi-frame median used only by SLAM.
+  mapping_output_scan_topic: /nav/scan2d_stable
+  mapping_window_frames: 15
+  mapping_min_samples_per_bin: 3
+  output_frame: base
+  # Livox pose in base, taken from docs/sensors-and-topics.md.
+  laser_x: 0.20
+  laser_y: 0.00
+  laser_z: 0.08
+  laser_pitch: 0.785
+  min_obstacle_z: -0.30
+  max_obstacle_z: 0.80
+  range_min: 0.15
+  range_max: 8.00
+  angle_increment: 0.01745329252  # 1 degree
+
+safety_guard:
+  input_twist_topic: /nav/cmd_vel_raw
+  scan_topic: /nav/scan2d
+  output_twist_topic: /cmd_vel
+  status_topic: /nav/status
+  publish_rate: 20.0
+  command_timeout: 0.30
+  scan_timeout: 0.50
+  stop_distance: 0.60
+  slow_distance: 1.00
+  front_half_angle: 0.52  # 30 degrees on either side
+  max_linear_x: 0.35
+  max_linear_y: 0.25
+  max_angular_z: 0.60
+
+mission_manager:
+  status_topic: /nav/mission_status

@@ -1,0 +1,13 @@
+
+.agents/
+.codex/
+__pycache__/
+*.py[cod]
+
+build/
+devel/
+install/
+log/
+logs/
+.catkin_tools/
+*.o

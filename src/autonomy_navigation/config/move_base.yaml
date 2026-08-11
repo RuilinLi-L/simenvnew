@@ -1,0 +1,22 @@
+# Reserved for stage 2: move_base + DWA configuration.
+# Do not copy the repository's old unitree_move_base parameters: those use
+# unavailable face/left/right laser topics and are not part of this package.
+
+controller_frequency: 10.0
+base_global_planner: global_planner/GlobalPlanner
+base_local_planner: dwa_local_planner/DWAPlannerROS
+
+DWAPlannerROS:
+  holonomic_robot: true
+  max_vel_x: 0.35
+  min_vel_x: -0.15
+  max_vel_y: 0.25
+  min_vel_y: -0.25
+  max_vel_theta: 0.60
+  min_vel_theta: -0.60
+  acc_lim_x: 0.30
+  acc_lim_y: 0.30
+  acc_lim_theta: 0.60
+  xy_goal_tolerance: 0.30
+  yaw_goal_tolerance: 0.35
+  sim_time: 1.5

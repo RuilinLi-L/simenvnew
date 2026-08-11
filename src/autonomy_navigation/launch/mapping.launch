@@ -1,0 +1,22 @@
+<launch>
+  <!-- Use the temporal-stable scan. Safety still uses /nav/scan2d. -->
+  <arg name="scan_topic" default="/nav/scan2d_stable"/>
+  <arg name="mapping_config" default="$(find autonomy_navigation)/config/hector_mapping.yaml"/>
+
+  <node pkg="hector_mapping"
+        type="hector_mapping"
+        name="nav_hector_mapping"
+        output="screen">
+    <rosparam command="load" file="$(arg mapping_config)"/>
+    <param name="scan_topic" value="$(arg scan_topic)"/>
+    <remap from="poseupdate" to="/nav/robot_pose"/>
+  </node>
+
+  <node pkg="autonomy_navigation"
+        type="pose_bridge.py"
+        name="nav_pose_bridge"
+        output="screen">
+    <param name="input_topic" value="/nav/robot_pose"/>
+    <param name="child_frame" value="nav_base"/>
+  </node>
+</launch>

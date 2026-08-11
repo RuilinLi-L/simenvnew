@@ -1,0 +1,35 @@
+# FAST-LIO settings for this simulator's Livox MID-360 and its dedicated IMU.
+# Inputs are supplied by nav_livox_adapter.py, which uses raw /scan only.
+
+common:
+  lid_topic: /nav/livox_custom
+  imu_topic: /livox/imu
+  time_sync_en: false
+  time_offset_lidar_to_imu: 0.0
+
+preprocess:
+  lidar_type: 1       # Livox CustomMsg
+  scan_line: 1        # simulator adapter publishes one ordered scan line
+  blind: 0.30
+
+mapping:
+  acc_cov: 0.1
+  gyr_cov: 0.1
+  b_acc_cov: 0.0001
+  b_gyr_cov: 0.0001
+  fov_degree: 360
+  det_range: 30.0
+  extrinsic_est_en: false
+  # LiDAR pose relative to the Livox IMU from robot.xacro.
+  extrinsic_T: [-0.011, -0.02329, 0.04412]
+  extrinsic_R: [1, 0, 0, 0, 1, 0, 0, 0, 1]
+
+publish:
+  path_en: true
+  scan_publish_en: true
+  dense_publish_en: false
+  scan_bodyframe_pub_en: true
+
+pcd_save:
+  pcd_save_en: false
+  interval: -1

@@ -1,0 +1,31 @@
+<launch>
+  <!-- 3-D LiDAR + IMU localization. Do not run mapping.launch at the same time. -->
+  <arg name="config" default="$(find autonomy_navigation)/config/fast_lio_mid360.yaml"/>
+
+  <node pkg="autonomy_navigation"
+        type="livox_adapter.py"
+        name="nav_livox_adapter"
+        output="screen"/>
+
+  <rosparam command="load" file="$(arg config)"/>
+  <param name="feature_extract_enable" value="false"/>
+  <param name="point_filter_num" value="2"/>
+  <param name="max_iteration" value="3"/>
+  <param name="filter_size_surf" value="0.25"/>
+  <param name="filter_size_map" value="0.25"/>
+  <param name="cube_side_length" value="60.0"/>
+  <param name="runtime_pos_log_enable" value="false"/>
+
+  <node pkg="fast_lio" type="fastlio_mapping" name="nav_fast_lio" output="screen">
+    <remap from="/Odometry" to="/nav/lio_odom"/>
+    <remap from="/path" to="/nav/lio_path"/>
+    <remap from="/cloud_registered" to="/nav/lio/cloud_registered"/>
+    <remap from="/cloud_registered_body" to="/nav/lio/cloud_body"/>
+    <remap from="/Laser_map" to="/nav/lio/map"/>
+  </node>
+
+  <node pkg="autonomy_navigation"
+        type="lio_pose_bridge.py"
+        name="nav_lio_pose_bridge"
+        output="screen"/>
+</launch>
