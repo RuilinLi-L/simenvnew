@@ -9,7 +9,10 @@ common:
 
 preprocess:
   lidar_type: 1       # Livox CustomMsg
-  scan_line: 1        # simulator adapter publishes one ordered scan line
+  # The simulator publishes one instantaneous cloud.  The adapter sets every
+  # point offset_time to zero so FAST-LIO does not deskew a snapshot as a
+  # fictitious 100 ms rolling scan.
+  scan_line: 1
   blind: 0.30
 
 mapping:

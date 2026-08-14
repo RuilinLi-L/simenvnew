@@ -2,33 +2,20 @@
 <package format="2">
   <name>autonomy_navigation</name>
   <version>0.1.0</version>
-  <description>Independent autonomy and navigation package for the competition A1 robot.</description>
+  <description>FAST-LIO navigation integration for SimEnv</description>
 
-  <maintainer email="navigation-team@example.com">Navigation Team</maintainer>
-  <license>BSD-3-Clause</license>
+  <maintainer email="dev@example.com">SimEnv Developer</maintainer>
+  <license>MIT</license>
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <build_depend>geometry_msgs</build_depend>
-  <build_depend>message_generation</build_depend>
-  <build_depend>nav_msgs</build_depend>
-  <build_depend>rospy</build_depend>
-  <build_depend>sensor_msgs</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <build_depend>tf</build_depend>
-
-  <build_export_depend>geometry_msgs</build_export_depend>
-  <build_export_depend>nav_msgs</build_export_depend>
-  <build_export_depend>rospy</build_export_depend>
-  <build_export_depend>sensor_msgs</build_export_depend>
-  <build_export_depend>std_msgs</build_export_depend>
-  <build_export_depend>tf</build_export_depend>
-
-  <exec_depend>geometry_msgs</exec_depend>
-  <exec_depend>message_runtime</exec_depend>
-  <exec_depend>nav_msgs</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
   <exec_depend>tf</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>livox_ros_driver</exec_depend>
+  <exec_depend>fast_lio</exec_depend>
 </package>
+
