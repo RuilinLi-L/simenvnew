@@ -18,10 +18,15 @@ libtorch 和 CUDA 路径在 `src/unitree_guide/unitree_guide/unitree_guide/CMake
 ## 编译
 
 ```bash
+bash scripts/setup_localization_dependencies.sh
 source /opt/ros/noetic/setup.bash
 catkin_make -j
 source ./devel/setup.bash
 ```
+
+`src/fast_lio`、`src/hector_slam` 和 `src/livox_ros_driver` 是定位链所需的
+依赖；缺失时不要继续编译。仿真没有真实 Livox 设备，但 FAST-LIO 仍需要
+`livox_ros_driver` 提供的 `CustomMsg` 消息类型。
 
 ## 一键启动
 
