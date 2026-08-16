@@ -1,35 +1,63 @@
 xacro: in-order processing became default in ROS Melodic. You can drop the option.
-[INFO] [1786459013.421553884]: Finished loading Gazebo ROS API Plugin.
-[INFO] [1786459013.424590597]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...
-[INFO] [1786459017.965134574]: waitForService: Service [/gazebo/set_physics_properties] is now available.
-[INFO] [1786459018.148515073, 0.002000000]: <initialOrientationAsReference> is unset, using default value of false to comply with REP 145 (world as orientation reference)
-[INFO] [1786459018.148619046, 0.002000000]: <robotNamespace> set to: //
-[INFO] [1786459018.148632125, 0.002000000]: <topicName> set to: trunk_imu
-[INFO] [1786459018.148638958, 0.002000000]: <frameName> set to: imu_link
-[INFO] [1786459018.148687290, 0.002000000]: <updateRateHZ> set to: 1000
-[INFO] [1786459018.148725372, 0.002000000]: <gaussianNoise> set to: 0
-[INFO] [1786459018.148757928, 0.002000000]: <xyzOffset> set to: 0 0 0
-[INFO] [1786459018.148791327, 0.002000000]: <rpyOffset> set to: 0 -0 0
-[INFO] [1786459018.348754944, 0.002000000]: load csv file name:/home/ruilinli/SimEnv/src/unitree_guide/unitree_ros/robots/a1_description/scan_mode/mid360.csv
+Error in XmlRpcClient::writeRequest: write error (Connection refused).
+Error in XmlRpcClient::writeRequest: write error (Connection refused).
+[INFO] [1786889212.991498255]: Finished loading Gazebo ROS API Plugin.
+[INFO] [1786889212.994431020]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...
+[INFO] [1786889218.888547836]: waitForService: Service [/gazebo/set_physics_properties] is now available.
+[INFO] [1786889219.380848865, 0.474000000]: Physics dynamic reconfigure ready.
+[INFO] [1786889219.688442046, 0.596000000]: <initialOrientationAsReference> is unset, using default value of false to comply with REP 145 (world as orientation reference)
+[INFO] [1786889219.688558730, 0.596000000]: <robotNamespace> set to: //
+[INFO] [1786889219.688572412, 0.596000000]: <topicName> set to: trunk_imu
+[INFO] [1786889219.688599411, 0.596000000]: <frameName> set to: imu_link
+[INFO] [1786889219.688668895, 0.596000000]: <updateRateHZ> set to: 1000
+[INFO] [1786889219.688683017, 0.596000000]: <gaussianNoise> set to: 0
+[INFO] [1786889219.688739767, 0.596000000]: <xyzOffset> set to: 0 0 0
+[INFO] [1786889219.688788498, 0.596000000]: <rpyOffset> set to: 0 -0 0
+[INFO] [1786889219.691529424, 0.596000000]: <initialOrientationAsReference> is unset, using default value of false to comply with REP 145 (world as orientation reference)
+[INFO] [1786889219.691577584, 0.596000000]: <robotNamespace> set to: //
+[INFO] [1786889219.691587512, 0.596000000]: <topicName> set to: /livox/imu
+[INFO] [1786889219.691594676, 0.596000000]: <frameName> set to: livox_imu_link
+[INFO] [1786889219.691612588, 0.596000000]: <updateRateHZ> set to: 1000
+[INFO] [1786889219.691620823, 0.596000000]: <gaussianNoise> set to: 0
+[INFO] [1786889219.691646249, 0.596000000]: <xyzOffset> set to: 0 0 0
+[INFO] [1786889219.691657800, 0.596000000]: <rpyOffset> set to: 0 -0 0
+[INFO] [1786889219.874070292, 0.596000000]: load csv file name:/home/ruilinli/SimEnv/src/unitree_guide/unitree_ros/robots/a1_description/scan_mode/mid360.csv
 cannot convert str:
 data size:800000
-[INFO] [1786459012.821359, 0.000000]: Loading model XML from ros parameter robot_description
-[INFO] [1786459012.842325, 0.000000]: Waiting for service /gazebo/spawn_urdf_model
-[INFO] [1786459017.968544, 0.000000]: Calling service /gazebo/spawn_urdf_model
-[INFO] [1786459019.718157, 0.002000]: Spawn status: SpawnModel: Successfully spawned entity
-[INFO] [1786459019.720760, 0.002000]: Waiting for service /gazebo/set_model_configuration
-[INFO] [1786459019.725067, 0.002000]: temporary hack to **fix** the -J joint position option (issue #93), sleeping for 1 second to avoid race condition.
-[INFO] [1786459020.728149, 0.002000]: Calling service /gazebo/set_model_configuration
-[INFO] [1786459020.735220, 0.002000]: Set model configuration status: SetModelConfiguration: success
-[WARN] [1786460842.432092, 1683.052000]: Controller Spawner error while taking down controllers: transport error completing service call: unable to receive data from sender, check sender's logs for details
+[WARN] [1786889212.223471, 0.000000]: wait_for_service(/gazebo/spawn_urdf_model): failed to contact, will keep trying
+[INFO] [1786889212.207113, 0.000000]: Loading model XML from ros parameter robot_description
+[INFO] [1786889212.217426, 0.000000]: Waiting for service /gazebo/spawn_urdf_model
+[INFO] [1786889219.020168, 0.080000]: wait_for_service(/gazebo/spawn_urdf_model): finally were able to contact [rosrpc://LAPTOP-OSA18K6E:45363]
+[INFO] [1786889219.021985, 0.080000]: Calling service /gazebo/spawn_urdf_model
+[INFO] [1786889220.947370, 0.596000]: Spawn status: SpawnModel: Successfully spawned entity
+[INFO] [1786889220.949084, 0.596000]: Waiting for service /gazebo/set_model_configuration
+[INFO] [1786889220.953686, 0.596000]: temporary hack to **fix** the -J joint position option (issue #93), sleeping for 1 second to avoid race condition.
+[INFO] [1786889221.956702, 0.596000]: Calling service /gazebo/set_model_configuration
+[INFO] [1786889221.964968, 0.596000]: Set model configuration status: SetModelConfiguration: success
+
+libcurl: (7) Failed to connect to fuel.gazebosim.org port 443: Network is unreachable
+
+libcurl: (7) Failed to connect to fuel.ignitionrobotics.org port 443: Network is unreachable
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom (parent map) at time 393.228000 according to authority /localization_adapter
+         at line 277 in /tmp/binarydeb/ros-noetic-tf2-0.7.10/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base (parent odom) at time 393.228000 according to authority /localization_adapter
+         at line 277 in /tmp/binarydeb/ros-noetic-tf2-0.7.10/src/buffer_core.cpp
+[INFO] [1786889212.236792, 0.000000]: Blind range : 0.5 m
+[INFO] [1786889212.246191, 0.000000]: Angle filter : -7 ~ 55 deg
+[INFO] [1786889212.248571, 0.000000]: Use ground-truth odom for /livox/Pointcloud2: False
+[INFO] [1786889212.255208, 0.000000]: === Pointcloud2livox STARTED ===
+[INFO] [1786889212.256634, 0.000000]: Local sensor frame: laser_livox
+[WARN] [1786889212.184009, 0.000000]: wait_for_service(/a1_gazebo/controller_manager/load_controller): failed to contact, will keep trying
+[WARN] [1786890129.719386, 799.650000]: Controller Spawner error while taking down controllers: transport error completing service call: unable to receive data from sender, check sender's logs for details
+[31m[gazebo_gui-2] escalating to SIGTERM[0m
+[31m[a1_gazebo/controller_spawner-4] escalating to SIGTERM[0m
 [31m[gazebo-1] escalating to SIGTERM[0m
-[31m[a1_gazebo/controller_spawner-3] escalating to SIGTERM[0m
-... logging to /home/ruilinli/.ros/log/83550f0a-956c-11f1-b1a4-a908c5250b40/roslaunch-LAPTOP-OSA18K6E-507065.log
+... logging to /home/ruilinli/.ros/log/1f432036-9974-11f1-90aa-5f8d2ff91c13/roslaunch-LAPTOP-OSA18K6E-175214.log
 Checking log directory for disk usage. This may take a while.
 Press Ctrl-C to interrupt
 Done checking log file disk usage. Usage is <1GB.
 ]2;/home/ruilinli/SimEnv/src/unitree_guide/unitree_guide/unitree_guide/launch/multi_floor_gazeboSim.launch
-[1mstarted roslaunch server http://LAPTOP-OSA18K6E:35327/[0m
+[1mstarted roslaunch server http://LAPTOP-OSA18K6E:44623/[0m
 
 SUMMARY
 ========
@@ -98,6 +126,10 @@ PARAMETERS
  * /a1_gazebo/joint_state_controller/publish_rate: 1000
  * /a1_gazebo/joint_state_controller/type: joint_state_contr...
  * /gazebo/enable_ros_network: True
+ * /pointcloud2livox/laser_blind: 0.5
+ * /pointcloud2livox/max_angle: 55
+ * /pointcloud2livox/min_angle: -7
+ * /pointcloud2livox/use_ground_truth_odom: False
  * /robot_description: <?xml version="1....
  * /robot_name: a1
  * /rosdistro: noetic
@@ -108,6 +140,8 @@ PARAMETERS
 NODES
   /
     gazebo (gazebo_ros/gzserver)
+    gazebo_gui (gazebo_ros/gzclient)
+    pointcloud2livox (unitree_guide/pointcloud2livox.py)
     robot_state_publisher (robot_state_publisher/robot_state_publisher)
     urdf_spawner (gazebo_ros/spawn_model)
   /a1_gazebo/
@@ -115,14 +149,18 @@ NODES
 
 [1mROS_MASTER_URI=http://localhost:11311[0m
 ]2;/home/ruilinli/SimEnv/src/unitree_guide/unitree_guide/unitree_guide/launch/multi_floor_gazeboSim.launch http://localhost:11311
-[1mprocess[gazebo-1]: started with pid [507099][0m
-[1mprocess[urdf_spawner-2]: started with pid [507102][0m
-[1mprocess[a1_gazebo/controller_spawner-3]: started with pid [507104][0m
-[1mprocess[robot_state_publisher-4]: started with pid [507106][0m
-[1m[urdf_spawner-2] process has finished cleanly
-log file: /home/ruilinli/.ros/log/83550f0a-956c-11f1-b1a4-a908c5250b40/urdf_spawner-2*.log[0m
-[robot_state_publisher-4] killing on exit
-[a1_gazebo/controller_spawner-3] killing on exit
+[1mprocess[gazebo-1]: started with pid [175252][0m
+[1mprocess[gazebo_gui-2]: started with pid [175255][0m
+[1mprocess[urdf_spawner-3]: started with pid [175265][0m
+[1mprocess[a1_gazebo/controller_spawner-4]: started with pid [175266][0m
+[1mprocess[robot_state_publisher-5]: started with pid [175267][0m
+[1mprocess[pointcloud2livox-6]: started with pid [175268][0m
+[1m[urdf_spawner-3] process has finished cleanly
+log file: /home/ruilinli/.ros/log/1f432036-9974-11f1-90aa-5f8d2ff91c13/urdf_spawner-3*.log[0m
+[robot_state_publisher-5] killing on exit
+[pointcloud2livox-6] killing on exit
+[a1_gazebo/controller_spawner-4] killing on exit
+[gazebo_gui-2] killing on exit
 [gazebo-1] killing on exit
 shutting down processing monitor...
 ... shutting down processing monitor complete

@@ -357,9 +357,15 @@
                         </noise>
                     </ray>
                     <visualize>false</visualize>
-                    <!-- Keep the original 24 ms Livox scan phase while tracing 1200 rays. -->
+                    <!-- Trace 1200 deterministic full-FOV rays per update.
+                         Denser snapshots over-correlate planar constraints
+                         and destabilize FAST-LIO in corridors. -->
                     <samples>2400</samples>
                     <downsample>2</downsample>
+                    <!-- Use a deterministic full-FOV ray subset at 10 Hz.
+                         FAST-LIO otherwise receives nearly disjoint sparse
+                         pattern fragments and its first scan match diverges. -->
+                    <stable_full_scan>true</stable_full_scan>
                     <csv_file_name>package://a1_description/scan_mode/mid360.csv</csv_file_name>
                     <ros_topic>/scan</ros_topic>
                     <frameName>laser_livox</frameName>

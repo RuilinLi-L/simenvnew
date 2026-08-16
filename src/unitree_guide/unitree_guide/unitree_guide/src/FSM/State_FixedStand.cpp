@@ -84,7 +84,9 @@ void State_FixedStand::enter(){
     for(int i=0; i<12; i++){
         _lowCmd->motorCmd[i].q = _lowState->motorState[i].q;
         _startPos[i] = _lowState->motorState[i].q;
-        _startPos_real[i] = _ctrlComp->ioInterFreeDog->low_state.motorState_free_dog[i].q;
+        _startPos_real[i] = _ctrlComp->ioInterFreeDog != nullptr
+            ? _ctrlComp->ioInterFreeDog->low_state.motorState_free_dog[i].q
+            : 0.0f;
     }
     _ctrlComp->setAllStance();
 }
