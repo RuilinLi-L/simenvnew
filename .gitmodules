@@ -1,0 +1,9 @@
+[submodule "src/fast_lio"]
+	path = src/fast_lio
+	url = https://github.com/hku-mars/FAST_LIO.git
+[submodule "src/livox_ros_driver"]
+	path = src/livox_ros_driver
+	url = https://github.com/Livox-SDK/livox_ros_driver.git
+[submodule "src/hector_slam"]
+	path = src/hector_slam
+	url = https://github.com/tu-darmstadt-ros-pkg/hector_slam.git

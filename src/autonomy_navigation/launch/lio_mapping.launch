@@ -1,11 +1,14 @@
 <launch>
   <!-- 3-D LiDAR + IMU localization. Do not run mapping.launch at the same time. -->
   <arg name="config" default="$(find autonomy_navigation)/config/fast_lio_mid360.yaml"/>
+  <arg name="instantaneous_scan" default="true"/>
 
   <node pkg="autonomy_navigation"
         type="livox_adapter.py"
         name="nav_livox_adapter"
-        output="screen"/>
+        output="screen">
+    <param name="instantaneous_scan" value="$(arg instantaneous_scan)"/>
+  </node>
 
   <rosparam command="load" file="$(arg config)"/>
   <param name="feature_extract_enable" value="false"/>

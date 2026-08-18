@@ -184,7 +184,10 @@ export COMPETITION_ROBOT_YAW="$ROBOT_YAW"
 export UNITREE_CTRL_DT
 export UNITREE_LOG_WAIT_WARNINGS
 export CONTROLLER_SPAWNER_TIMEOUT
-export GAZEBO_MODEL_PATH="${GAZEBO_MODEL_PATH:-}:$SCENE_OUTPUT_DIR:$UNITREE_GAZEBO_MODELS"
+# The generated competition world embeds its building model directly.  Adding
+# the whole output directory makes Gazebo scan JSON and world files as models,
+# which stalls the GUI model browser during startup.
+export GAZEBO_MODEL_PATH="${GAZEBO_MODEL_PATH:-}:$UNITREE_GAZEBO_MODELS"
 export GAZEBO_PLUGIN_PATH="$WORKSPACE_DIR/devel/lib:${GAZEBO_PLUGIN_PATH:-}"
 
 echo "=========================================="

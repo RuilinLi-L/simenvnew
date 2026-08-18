@@ -16,7 +16,10 @@ endif()
 if(NOT CMAKE_CUDA_FLAGS MATCHES "-arch=sm_")
     set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -arch=sm_52" CACHE STRING "CUDA flags" FORCE)
 endif()
-find_package(Torch REQUIRED PATHS "${LIBTORCH_DIR}")
+find_package(Torch REQUIRED
+    PATHS "${LIBTORCH_DIR}" "${LIBTORCH_DIR}/share/cmake/Torch"
+    NO_DEFAULT_PATH
+)
 
 set(ROBOT_TYPE A1)         # The type of robot, support Go1 and A1 currently
 set(PLATFORM amd64)         # The platform to compile, support amd64 and arm64
@@ -92,6 +95,7 @@ if(CATKIN_MAKE)
         std_msgs
         tf
         geometry_msgs
+        nav_msgs
         unitree_legged_msgs
     )
     ##添加livox的msg包
@@ -111,6 +115,7 @@ if(CATKIN_MAKE)
         CATKIN_DEPENDS 
         unitree_legged_msgs 
         gazebo_msgs
+        nav_msgs
         std_srvs
     )
 endif()
@@ -170,6 +175,11 @@ target_link_libraries(state_from_gazebo ${catkin_LIBRARIES})
 
 
 add_executable(junior_ctrl src/main.cpp ${SRC_LIST})
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    # QuadProg++ is a vendored legacy component that still uses `register`.
+    # Clang treats it as an error under this package's required C++17 mode.
+    target_compile_options(junior_ctrl PRIVATE -Wno-register)
+endif()
 target_link_libraries(junior_ctrl ${TORCH_LIBRARIES})
 if(CATKIN_MAKE)
     target_link_libraries(junior_ctrl ${catkin_LIBRARIES})

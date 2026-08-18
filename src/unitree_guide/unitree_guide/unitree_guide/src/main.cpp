@@ -122,8 +122,13 @@ int main(int argc, char **argv)
     ioInter = new IOSDK();
     ctrlPlat = CtrlPlatform::REALROBOT;
 #endif // COMPILE_WITH_REAL_ROBOT
-    IOFREEDOGSDK *ioInter_freedog;
+    // The FreeDog SDK talks to physical-robot UDP endpoints.  Gazebo already
+    // exchanges state and commands through IOROS, so do not create it in a
+    // simulation build.
+    IOFREEDOGSDK *ioInter_freedog = nullptr;
+#ifdef COMPILE_WITH_REAL_ROBOT
     ioInter_freedog = new IOFREEDOGSDK();
+#endif // COMPILE_WITH_REAL_ROBOT
     CtrlComponents *ctrlComp = new CtrlComponents(ioInter,ioInter_freedog);
     ctrlComp->ctrlPlatform = ctrlPlat;
     ctrlComp->dt = readControllerDt();

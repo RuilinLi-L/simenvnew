@@ -98,7 +98,9 @@ void FSM::initialize(){
 void FSM::run(){
     _startTime = getSystemTime();
     _ctrlComp->sendRecv();
-    _ctrlComp->ioInterFreeDog->sendRecv();
+    if(_ctrlComp->ioInterFreeDog != nullptr){
+        _ctrlComp->ioInterFreeDog->sendRecv();
+    }
     if(handleResetCommand()){
         absoluteWait(_startTime, (long long)(_ctrlComp->dt * 1000000));
         return;

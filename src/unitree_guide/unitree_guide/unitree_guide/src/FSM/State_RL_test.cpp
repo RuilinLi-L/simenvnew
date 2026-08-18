@@ -68,10 +68,12 @@ void State_RL::enter(){
     // }
     // else if(real == true)
     // {
-        for(int i=0; i<12; i++){
-            float c_joint = _ctrlComp->ioInterFreeDog->low_state.motorState_free_dog[i].q;
-            std::vector<double> joint{c_joint, 0, 0, 80, 1};
-            _ctrlComp->ioInterFreeDog->setCmd(i,joint);
+        if(_ctrlComp->ioInterFreeDog != nullptr){
+            for(int i=0; i<12; i++){
+                float c_joint = _ctrlComp->ioInterFreeDog->low_state.motorState_free_dog[i].q;
+                std::vector<double> joint{c_joint, 0, 0, 80, 1};
+                _ctrlComp->ioInterFreeDog->setCmd(i,joint);
+            }
         }
     // }
     for (int i = 0; i < HISTORY_LEN; i++)
@@ -241,11 +243,13 @@ void State_RL::save_amp_obs_thread()
             // }
             // else if (real == true){
                 std::cout << "target_joint";
-                for(int j=0; j<12; j++){
-                    std::cout << _targetPos_map[_cnt][j] << " ";
-                    float t_joint = (1 - _percent)*_startPos[j] + _percent*_targetPos_map[_cnt][reindex[j]];
-                    std::vector<double> joint{t_joint, 0, 0, 80, 1};
-                    _ctrlComp->ioInterFreeDog->setCmd(j,joint);
+                if(_ctrlComp->ioInterFreeDog != nullptr){
+                    for(int j=0; j<12; j++){
+                        std::cout << _targetPos_map[_cnt][j] << " ";
+                        float t_joint = (1 - _percent)*_startPos[j] + _percent*_targetPos_map[_cnt][reindex[j]];
+                        std::vector<double> joint{t_joint, 0, 0, 80, 1};
+                        _ctrlComp->ioInterFreeDog->setCmd(j,joint);
+                    }
                 }
                 std::cout << std::endl;
             // }

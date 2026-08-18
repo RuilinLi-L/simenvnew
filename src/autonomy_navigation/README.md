@@ -14,7 +14,7 @@
 - `cloud_to_scan.py`：将 Livox 三维点云投影为平面雷达扫描；不读取 Gazebo 真值里程计。安全控制使用最新一帧 `/nav/scan2d`，建图使用 5 帧稳定后的 `/nav/scan2d_stable`。
 - `safety_guard.py`：限制速度；雷达丢失或前方障碍过近时停车。
 - `mission_manager.py`：发布当前任务状态。后续的自动探索、门、电梯逻辑统一加在这里。
-- `lio_mapping.launch`：启动 FAST-LIO，使用原始三维点云和 Livox IMU 建图定位；发布 `/nav/robot_pose`、`/nav/lio_odom` 和三维点云地图。
+- `lio_mapping.launch`：启动 FAST-LIO，使用原始三维点云和 Livox IMU 建图定位；发布 `/nav/robot_pose`、`/nav/lio_odom` 和三维点云地图。仿真 `/scan` 是瞬时快照，适配器会将所有点时间置零，禁止把 10 Hz 发布周期伪造成扫描时长。
 
 ## 目录说明
 
@@ -32,6 +32,7 @@ autonomy_navigation/
 先在仓库根目录编译：
 
 ```bash
+bash scripts/setup_localization_dependencies.sh
 source /opt/ros/noetic/setup.bash
 catkin_make -j
 source devel/setup.bash
