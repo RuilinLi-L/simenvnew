@@ -1,6 +1,6 @@
 {
   "allowed_interfaces": {
-    "result_file": "/home/ruilinli/SimEnv/results/detected_danger.json",
+    "result_file": "/home/lhc/myProject/SimEnv/results/detected_danger.json",
     "services": [
       "/set_door_state",
       "/call_elevator"

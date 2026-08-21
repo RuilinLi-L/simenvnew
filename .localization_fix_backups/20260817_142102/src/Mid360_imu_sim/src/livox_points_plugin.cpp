@@ -102,15 +102,11 @@ void LivoxPointsPlugin::Load(gazebo::sensors::SensorPtr _parent, sdf::ElementPtr
     laserCollision->SetShape(rayShape);
     samplesStep = sdfPtr->Get<int>("samples");
     downSample = sdfPtr->Get<int>("downsample");
-    if (sdfPtr->HasElement("stable_full_scan")) {
-        stableFullScan = sdfPtr->Get<bool>("stable_full_scan");
-    }
     if (downSample < 1) {
         downSample = 1;
     }
     ROS_INFO_STREAM("sample:" << samplesStep);
     ROS_INFO_STREAM("downsample:" << downSample);
-    ROS_INFO_STREAM("stable full scan:" << (stableFullScan ? "true" : "false"));
     rayShape->RayShapes().reserve(samplesStep / downSample);
     rayShape->Load(sdfPtr);
     rayShape->Init();
@@ -204,31 +200,24 @@ void LivoxPointsPlugin::InitializeRays(std::vector<std::pair<int, AviaRotateInfo
     ignition::math::Vector3d start_point, end_point;
     ignition::math::Quaterniond ray;
     auto offset = laserCollision->RelativePose();
+    int64_t end_index = currStartIndex + samplesStep;
     int ray_index = 0;
     auto ray_size = rays.size();
     points_pair.reserve(rays.size());
-    for (; ray_index < ray_size; ray_index++) {
-        int64_t index;
-        if (stableFullScan) {
-            // Spread the available simulated rays over the entire recorded
-            // Mid-360 pattern.  Reusing the same directions at the next
-            // update gives a scan matcher genuine geometric correspondence.
-            index = (static_cast<int64_t>(ray_index) * maxPointSize) / ray_size;
-        } else {
-            index = (currStartIndex + static_cast<int64_t>(ray_index) * downSample)
-                    % maxPointSize;
-        }
+    for (int k = currStartIndex; k < end_index; k += downSample) {
+        auto index = k % maxPointSize;
         auto &rotate_info = aviaInfos[index];
         ray.Euler(ignition::math::Vector3d(0.0, rotate_info.zenith, rotate_info.azimuth));
         auto axis = offset.Rot() * ray * ignition::math::Vector3d(1.0, 0.0, 0.0);
         start_point = minDist * axis + offset.Pos();
         end_point = maxDist * axis + offset.Pos();
-        rays[ray_index]->SetPoints(start_point, end_point);
-        points_pair.emplace_back(ray_index, rotate_info);
+        if (ray_index < ray_size) {
+            rays[ray_index]->SetPoints(start_point, end_point);
+            points_pair.emplace_back(ray_index, rotate_info);
+        }
+        ray_index++;
     }
-    if (!stableFullScan) {
-        currStartIndex = (currStartIndex + samplesStep) % maxPointSize;
-    }
+    currStartIndex += samplesStep;
 }
 
 void LivoxPointsPlugin::InitializeScan(msgs::LaserScan *&scan) {

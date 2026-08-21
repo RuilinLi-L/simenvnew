@@ -131,11 +131,8 @@
         </collision>
     </link>
 
-    <!-- Keep the physical Mid-360 body at the repository's original pose.
-         Its collision mesh must not be rotated as a side effect of changing
-         the localization scan extrinsics, otherwise Gazebo contact dynamics
-         (and therefore the stand-up motion) can change. -->
-    <link name="laser_livox_body">
+    <!-- livox mid360 -->
+    <link name="laser_livox">
             <collision>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
@@ -149,18 +146,8 @@
                 </geometry>
             </visual>
     </link>
-    <joint name="laser_livox_body_joint" type="fixed">
-            <origin xyz="0.2 0 0.08" rpy="0 0.785 0"/>
-            <parent link="base"/>
-            <child link="laser_livox_body"/>
-    </joint>
-
-    <!-- Collision-free scan frame.  The ray sensor is mounted here so the
-         localization point cloud stays level without modifying the physical
-         lidar body or the robot's collision geometry. -->
-    <link name="laser_livox"/>
     <joint name="laser_livox_joint" type="fixed">
-            <origin xyz="0.2 0 0.08" rpy="0 0 0"/>
+            <origin xyz="0.2 0 0.08" rpy="0 0.785 0"/>
             <parent link="base"/>
             <child link="laser_livox"/>
     </joint>
@@ -186,8 +173,7 @@
             </collision>
     </link>
     <joint name="livox_imu_joint" type="fixed">
-            <!-- Preserve the original physical IMU mounting orientation. -->
-            <parent link="laser_livox_body"/>
+            <parent link="laser_livox"/>
             <child link="livox_imu_link"/>
             <origin rpy="0 0 0" xyz="-0.011 -0.02329 0.04412"/>
     </joint>

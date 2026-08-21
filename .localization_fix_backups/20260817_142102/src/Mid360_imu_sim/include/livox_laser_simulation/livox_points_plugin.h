@@ -98,14 +98,6 @@ class LivoxPointsPlugin : public RayPlugin {
     int64_t currStartIndex = 0;
     int64_t maxPointSize = 1000;
     int64_t downSample = 1;
-    // The original plugin advances through a tiny contiguous slice of the
-    // non-repeating Livox pattern on every Gazebo update.  At the simulated
-    // point rate adjacent 10 Hz clouds have almost no geometric overlap,
-    // which makes scan matching ill-conditioned.  In stable mode we use a
-    // deterministic, stratified full-pattern subset on every update.  This
-    // behaves like an instantaneous multi-beam scan and provides repeatable
-    // rays without using ground-truth pose information.
-    bool stableFullScan = true;
 
     double maxDist = 400.0;
     double minDist = 0.1;
