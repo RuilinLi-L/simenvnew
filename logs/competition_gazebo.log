@@ -1,167 +1,36 @@
 xacro: in-order processing became default in ROS Melodic. You can drop the option.
-Error in XmlRpcClient::writeRequest: write error (Connection refused).
-Error in XmlRpcClient::writeRequest: write error (Connection refused).
-[INFO] [1786889212.991498255]: Finished loading Gazebo ROS API Plugin.
-[INFO] [1786889212.994431020]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...
-[INFO] [1786889218.888547836]: waitForService: Service [/gazebo/set_physics_properties] is now available.
-[INFO] [1786889219.380848865, 0.474000000]: Physics dynamic reconfigure ready.
-[INFO] [1786889219.688442046, 0.596000000]: <initialOrientationAsReference> is unset, using default value of false to comply with REP 145 (world as orientation reference)
-[INFO] [1786889219.688558730, 0.596000000]: <robotNamespace> set to: //
-[INFO] [1786889219.688572412, 0.596000000]: <topicName> set to: trunk_imu
-[INFO] [1786889219.688599411, 0.596000000]: <frameName> set to: imu_link
-[INFO] [1786889219.688668895, 0.596000000]: <updateRateHZ> set to: 1000
-[INFO] [1786889219.688683017, 0.596000000]: <gaussianNoise> set to: 0
-[INFO] [1786889219.688739767, 0.596000000]: <xyzOffset> set to: 0 0 0
-[INFO] [1786889219.688788498, 0.596000000]: <rpyOffset> set to: 0 -0 0
-[INFO] [1786889219.691529424, 0.596000000]: <initialOrientationAsReference> is unset, using default value of false to comply with REP 145 (world as orientation reference)
-[INFO] [1786889219.691577584, 0.596000000]: <robotNamespace> set to: //
-[INFO] [1786889219.691587512, 0.596000000]: <topicName> set to: /livox/imu
-[INFO] [1786889219.691594676, 0.596000000]: <frameName> set to: livox_imu_link
-[INFO] [1786889219.691612588, 0.596000000]: <updateRateHZ> set to: 1000
-[INFO] [1786889219.691620823, 0.596000000]: <gaussianNoise> set to: 0
-[INFO] [1786889219.691646249, 0.596000000]: <xyzOffset> set to: 0 0 0
-[INFO] [1786889219.691657800, 0.596000000]: <rpyOffset> set to: 0 -0 0
-[INFO] [1786889219.874070292, 0.596000000]: load csv file name:/home/ruilinli/SimEnv/src/unitree_guide/unitree_ros/robots/a1_description/scan_mode/mid360.csv
+[0m[INFO] [1788175041.814307425]: Finished loading Gazebo ROS API Plugin.[0m
+[0m[INFO] [1788175041.816817233]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...[0m
+[0m[INFO] [1788175045.675404990, 0.012000000]: waitForService: Service [/gazebo/set_physics_properties] is now available.[0m
+[0m[INFO] [1788175046.086377015, 0.408000000]: Physics dynamic reconfigure ready.[0m
+[0m[INFO] [1788175046.452271347, 0.590000000]: <initialOrientationAsReference> is unset, using default value of false to comply with REP 145 (world as orientation reference)[0m
+[0m[INFO] [1788175046.452346520, 0.590000000]: <robotNamespace> set to: //[0m
+[0m[INFO] [1788175046.452358973, 0.590000000]: <topicName> set to: trunk_imu[0m
+[0m[INFO] [1788175046.452365953, 0.590000000]: <frameName> set to: imu_link[0m
+[0m[INFO] [1788175046.452393378, 0.590000000]: <updateRateHZ> set to: 1000[0m
+[0m[INFO] [1788175046.452422766, 0.590000000]: <gaussianNoise> set to: 0[0m
+[0m[INFO] [1788175046.452465942, 0.590000000]: <xyzOffset> set to: 0 0 0[0m
+[0m[INFO] [1788175046.452506478, 0.590000000]: <rpyOffset> set to: 0 -0 0[0m
+[0m[INFO] [1788175046.455115698, 0.590000000]: <initialOrientationAsReference> is unset, using default value of false to comply with REP 145 (world as orientation reference)[0m
+[0m[INFO] [1788175046.455161966, 0.590000000]: <robotNamespace> set to: //[0m
+[0m[INFO] [1788175046.455171286, 0.590000000]: <topicName> set to: /livox/imu[0m
+[0m[INFO] [1788175046.455180307, 0.590000000]: <frameName> set to: livox_imu_link[0m
+[0m[INFO] [1788175046.455198275, 0.590000000]: <updateRateHZ> set to: 1000[0m
+[0m[INFO] [1788175046.455226814, 0.590000000]: <gaussianNoise> set to: 0[0m
+[0m[INFO] [1788175046.455263379, 0.590000000]: <xyzOffset> set to: 0 0 0[0m
+[0m[INFO] [1788175046.455297719, 0.590000000]: <rpyOffset> set to: 0 -0 0[0m
+[0m[INFO] [1788175046.286618687, 0.590000000]: load csv file name:/home/ruilinli/SimEnv/src/unitree_guide/unitree_ros/robots/a1_description/scan_mode/mid360.csv[0m
 cannot convert str:
 data size:800000
-[WARN] [1786889212.223471, 0.000000]: wait_for_service(/gazebo/spawn_urdf_model): failed to contact, will keep trying
-[INFO] [1786889212.207113, 0.000000]: Loading model XML from ros parameter robot_description
-[INFO] [1786889212.217426, 0.000000]: Waiting for service /gazebo/spawn_urdf_model
-[INFO] [1786889219.020168, 0.080000]: wait_for_service(/gazebo/spawn_urdf_model): finally were able to contact [rosrpc://LAPTOP-OSA18K6E:45363]
-[INFO] [1786889219.021985, 0.080000]: Calling service /gazebo/spawn_urdf_model
-[INFO] [1786889220.947370, 0.596000]: Spawn status: SpawnModel: Successfully spawned entity
-[INFO] [1786889220.949084, 0.596000]: Waiting for service /gazebo/set_model_configuration
-[INFO] [1786889220.953686, 0.596000]: temporary hack to **fix** the -J joint position option (issue #93), sleeping for 1 second to avoid race condition.
-[INFO] [1786889221.956702, 0.596000]: Calling service /gazebo/set_model_configuration
-[INFO] [1786889221.964968, 0.596000]: Set model configuration status: SetModelConfiguration: success
 
-libcurl: (7) Failed to connect to fuel.gazebosim.org port 443: Network is unreachable
+libcurl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to fuel.ignitionrobotics.org:443 
 
-libcurl: (7) Failed to connect to fuel.ignitionrobotics.org port 443: Network is unreachable
-Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom (parent map) at time 393.228000 according to authority /localization_adapter
-         at line 277 in /tmp/binarydeb/ros-noetic-tf2-0.7.10/src/buffer_core.cpp
-Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base (parent odom) at time 393.228000 according to authority /localization_adapter
-         at line 277 in /tmp/binarydeb/ros-noetic-tf2-0.7.10/src/buffer_core.cpp
-[INFO] [1786889212.236792, 0.000000]: Blind range : 0.5 m
-[INFO] [1786889212.246191, 0.000000]: Angle filter : -7 ~ 55 deg
-[INFO] [1786889212.248571, 0.000000]: Use ground-truth odom for /livox/Pointcloud2: False
-[INFO] [1786889212.255208, 0.000000]: === Pointcloud2livox STARTED ===
-[INFO] [1786889212.256634, 0.000000]: Local sensor frame: laser_livox
-[WARN] [1786889212.184009, 0.000000]: wait_for_service(/a1_gazebo/controller_manager/load_controller): failed to contact, will keep trying
-[WARN] [1786890129.719386, 799.650000]: Controller Spawner error while taking down controllers: transport error completing service call: unable to receive data from sender, check sender's logs for details
-[31m[gazebo_gui-2] escalating to SIGTERM[0m
-[31m[a1_gazebo/controller_spawner-4] escalating to SIGTERM[0m
-[31m[gazebo-1] escalating to SIGTERM[0m
-... logging to /home/ruilinli/.ros/log/1f432036-9974-11f1-90aa-5f8d2ff91c13/roslaunch-LAPTOP-OSA18K6E-175214.log
-Checking log directory for disk usage. This may take a while.
-Press Ctrl-C to interrupt
-Done checking log file disk usage. Usage is <1GB.
-]2;/home/ruilinli/SimEnv/src/unitree_guide/unitree_guide/unitree_guide/launch/multi_floor_gazeboSim.launch
-[1mstarted roslaunch server http://LAPTOP-OSA18K6E:44623/[0m
-
-SUMMARY
-========
-
-PARAMETERS
- * /a1_gazebo/FL_calf_controller/joint: FL_calf_joint
- * /a1_gazebo/FL_calf_controller/pid/d: 8.0
- * /a1_gazebo/FL_calf_controller/pid/i: 0.0
- * /a1_gazebo/FL_calf_controller/pid/p: 300.0
- * /a1_gazebo/FL_calf_controller/type: unitree_legged_co...
- * /a1_gazebo/FL_hip_controller/joint: FL_hip_joint
- * /a1_gazebo/FL_hip_controller/pid/d: 5.0
- * /a1_gazebo/FL_hip_controller/pid/i: 0.0
- * /a1_gazebo/FL_hip_controller/pid/p: 100.0
- * /a1_gazebo/FL_hip_controller/type: unitree_legged_co...
- * /a1_gazebo/FL_thigh_controller/joint: FL_thigh_joint
- * /a1_gazebo/FL_thigh_controller/pid/d: 8.0
- * /a1_gazebo/FL_thigh_controller/pid/i: 0.0
- * /a1_gazebo/FL_thigh_controller/pid/p: 300.0
- * /a1_gazebo/FL_thigh_controller/type: unitree_legged_co...
- * /a1_gazebo/FR_calf_controller/joint: FR_calf_joint
- * /a1_gazebo/FR_calf_controller/pid/d: 8.0
- * /a1_gazebo/FR_calf_controller/pid/i: 0.0
- * /a1_gazebo/FR_calf_controller/pid/p: 300.0
- * /a1_gazebo/FR_calf_controller/type: unitree_legged_co...
- * /a1_gazebo/FR_hip_controller/joint: FR_hip_joint
- * /a1_gazebo/FR_hip_controller/pid/d: 5.0
- * /a1_gazebo/FR_hip_controller/pid/i: 0.0
- * /a1_gazebo/FR_hip_controller/pid/p: 100.0
- * /a1_gazebo/FR_hip_controller/type: unitree_legged_co...
- * /a1_gazebo/FR_thigh_controller/joint: FR_thigh_joint
- * /a1_gazebo/FR_thigh_controller/pid/d: 8.0
- * /a1_gazebo/FR_thigh_controller/pid/i: 0.0
- * /a1_gazebo/FR_thigh_controller/pid/p: 300.0
- * /a1_gazebo/FR_thigh_controller/type: unitree_legged_co...
- * /a1_gazebo/RL_calf_controller/joint: RL_calf_joint
- * /a1_gazebo/RL_calf_controller/pid/d: 8.0
- * /a1_gazebo/RL_calf_controller/pid/i: 0.0
- * /a1_gazebo/RL_calf_controller/pid/p: 300.0
- * /a1_gazebo/RL_calf_controller/type: unitree_legged_co...
- * /a1_gazebo/RL_hip_controller/joint: RL_hip_joint
- * /a1_gazebo/RL_hip_controller/pid/d: 5.0
- * /a1_gazebo/RL_hip_controller/pid/i: 0.0
- * /a1_gazebo/RL_hip_controller/pid/p: 100.0
- * /a1_gazebo/RL_hip_controller/type: unitree_legged_co...
- * /a1_gazebo/RL_thigh_controller/joint: RL_thigh_joint
- * /a1_gazebo/RL_thigh_controller/pid/d: 8.0
- * /a1_gazebo/RL_thigh_controller/pid/i: 0.0
- * /a1_gazebo/RL_thigh_controller/pid/p: 300.0
- * /a1_gazebo/RL_thigh_controller/type: unitree_legged_co...
- * /a1_gazebo/RR_calf_controller/joint: RR_calf_joint
- * /a1_gazebo/RR_calf_controller/pid/d: 8.0
- * /a1_gazebo/RR_calf_controller/pid/i: 0.0
- * /a1_gazebo/RR_calf_controller/pid/p: 300.0
- * /a1_gazebo/RR_calf_controller/type: unitree_legged_co...
- * /a1_gazebo/RR_hip_controller/joint: RR_hip_joint
- * /a1_gazebo/RR_hip_controller/pid/d: 5.0
- * /a1_gazebo/RR_hip_controller/pid/i: 0.0
- * /a1_gazebo/RR_hip_controller/pid/p: 100.0
- * /a1_gazebo/RR_hip_controller/type: unitree_legged_co...
- * /a1_gazebo/RR_thigh_controller/joint: RR_thigh_joint
- * /a1_gazebo/RR_thigh_controller/pid/d: 8.0
- * /a1_gazebo/RR_thigh_controller/pid/i: 0.0
- * /a1_gazebo/RR_thigh_controller/pid/p: 300.0
- * /a1_gazebo/RR_thigh_controller/type: unitree_legged_co...
- * /a1_gazebo/joint_state_controller/publish_rate: 1000
- * /a1_gazebo/joint_state_controller/type: joint_state_contr...
- * /gazebo/enable_ros_network: True
- * /pointcloud2livox/laser_blind: 0.5
- * /pointcloud2livox/max_angle: 55
- * /pointcloud2livox/min_angle: -7
- * /pointcloud2livox/use_ground_truth_odom: False
- * /robot_description: <?xml version="1....
- * /robot_name: a1
- * /rosdistro: noetic
- * /rosversion: 1.17.4
- * /use_sim_time: True
- * /world_file: /home/ruilinli/Si...
-
-NODES
-  /
-    gazebo (gazebo_ros/gzserver)
-    gazebo_gui (gazebo_ros/gzclient)
-    pointcloud2livox (unitree_guide/pointcloud2livox.py)
-    robot_state_publisher (robot_state_publisher/robot_state_publisher)
-    urdf_spawner (gazebo_ros/spawn_model)
-  /a1_gazebo/
-    controller_spawner (controller_manager/spawner)
-
-[1mROS_MASTER_URI=http://localhost:11311[0m
-]2;/home/ruilinli/SimEnv/src/unitree_guide/unitree_guide/unitree_guide/launch/multi_floor_gazeboSim.launch http://localhost:11311
-[1mprocess[gazebo-1]: started with pid [175252][0m
-[1mprocess[gazebo_gui-2]: started with pid [175255][0m
-[1mprocess[urdf_spawner-3]: started with pid [175265][0m
-[1mprocess[a1_gazebo/controller_spawner-4]: started with pid [175266][0m
-[1mprocess[robot_state_publisher-5]: started with pid [175267][0m
-[1mprocess[pointcloud2livox-6]: started with pid [175268][0m
-[1m[urdf_spawner-3] process has finished cleanly
-log file: /home/ruilinli/.ros/log/1f432036-9974-11f1-90aa-5f8d2ff91c13/urdf_spawner-3*.log[0m
-[robot_state_publisher-5] killing on exit
-[pointcloud2livox-6] killing on exit
-[a1_gazebo/controller_spawner-4] killing on exit
-[gazebo_gui-2] killing on exit
-[gazebo-1] killing on exit
-shutting down processing monitor...
-... shutting down processing monitor complete
-[1mdone[0m
+libcurl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to fuel.gazebosim.org:443 
+[INFO] [1788175041.295658, 0.000000]: Loading model XML from ros parameter robot_description
+[INFO] [1788175041.304896, 0.000000]: Waiting for service /gazebo/spawn_urdf_model
+[INFO] [1788175045.836416, 0.130000]: Calling service /gazebo/spawn_urdf_model
+[INFO] [1788175047.461129, 0.590000]: Spawn status: SpawnModel: Successfully spawned entity
+[INFO] [1788175047.462774, 0.590000]: Waiting for service /gazebo/set_model_configuration
+[INFO] [1788175047.467151, 0.590000]: temporary hack to **fix** the -J joint position option (issue #93), sleeping for 1 second to avoid race condition.
+[INFO] [1788175048.471771, 0.590000]: Calling service /gazebo/set_model_configuration
+[INFO] [1788175048.479684, 0.590000]: Set model configuration status: SetModelConfiguration: success

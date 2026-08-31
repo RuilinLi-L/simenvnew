@@ -1,0 +1,10 @@
+{
+  "exploration_time": 0.0,
+  "coordinate_frame": "world",
+  "mission_status": "RUNNING",
+  "finish_reason": "",
+  "run_profile": "simulation_truth",
+  "localization_backend": "gazebo_truth",
+  "official_eligible": false,
+  "detected_danger_sources": []
+}
