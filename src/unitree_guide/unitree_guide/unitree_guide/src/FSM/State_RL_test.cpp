@@ -172,6 +172,11 @@ FSMStateName State_RL::checkChange(){
 
 void State_RL::infer_thread_callback()
 {
+    // This thread performs inference only.  model.eval() controls module
+    // behavior, but it does not disable autograd.  Without this guard the
+    // recurrent observation history keeps the graph from every 20 ms cycle,
+    // causing unbounded host/GPU memory growth during long simulations.
+    torch::NoGradGuard no_grad;
     while(infer_thread_runnning == State_RL::RUNNING)
     {
         long long _start_time = getTime();
