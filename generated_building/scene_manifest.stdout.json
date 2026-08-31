@@ -23,8 +23,8 @@
     "team_scene_info_file": "/home/ruilinli/SimEnv/generated_building/team_scene_info.json",
     "velocity_command_topic": "/cmd_vel"
   },
-  "danger_count": 3,
-  "distractor_count": 5,
+  "danger_count": 6,
+  "distractor_count": 8,
   "door_config": "/home/ruilinli/SimEnv/generated_building/door_config.yaml",
   "elevator_config": "/home/ruilinli/SimEnv/generated_building/elevator_config.yaml",
   "gazebo_physics": {
@@ -52,13 +52,13 @@
   },
   "robot_start": {
     "x": 0.0,
-    "y": -3.2,
+    "y": 5.0,
     "yaw": 1.5708,
     "z": 0.6
   },
   "schema": "competition_scene_manifest_v1",
-  "seed": 758255969,
-  "source_count": 8,
+  "seed": 42,
+  "source_count": 14,
   "team_scene_info": "/home/ruilinli/SimEnv/generated_building/team_scene_info.json",
   "truth_file": "/home/ruilinli/SimEnv/results/danger_truth.json",
   "validation_report": "/home/ruilinli/SimEnv/generated_building/generation_checks.json",

@@ -14,6 +14,7 @@ ros::Publisher robotVelocity_BASE_frame_pub;
 string robot_name = "a1";
 nav_msgs::Odometry Odom;
 double x=0, y=0, z=0, roll=0, pitch=0, yaw=0;
+bool publish_tf = true;
 
 
 void callback_BASE(const gazebo_msgs::LinkStates::ConstPtr &msg) {
@@ -50,7 +51,9 @@ void callback_BASE(const gazebo_msgs::LinkStates::ConstPtr &msg) {
                                     y,
                                     z));
     // 发布odom到map的tf关系
-    bf1.sendTransform(tf::StampedTransform(transform_odom2map, stamp, "map", "odom"));
+    if (publish_tf) {
+        bf1.sendTransform(tf::StampedTransform(transform_odom2map, stamp, "map", "odom"));
+    }
     
     //求变化矩阵的逆解，用于推算map到odom的关系，以便能得到base到map的关系，及
     tf::Transform transform_map2odom = transform_odom2map.inverse();
@@ -83,7 +86,9 @@ void callback_BASE(const gazebo_msgs::LinkStates::ConstPtr &msg) {
     transform_odom2base.setRotation(q_odom);
     transform_odom2base.setOrigin(pt_odom);
 
-    bf2.sendTransform(tf::StampedTransform(transform_odom2base, stamp, "odom", "base"));
+    if (publish_tf) {
+        bf2.sendTransform(tf::StampedTransform(transform_odom2base, stamp, "odom", "base"));
+    }
 
     Odom.header.stamp = stamp;
     Odom.header.frame_id = "odom";
@@ -138,6 +143,8 @@ int main(int argc, char **argv) {
     roll  = atof(argv[6]);
   
     nh.param<std::string>("robot_name", robot_name, string("a1"));
+    nh.param<bool>("publish_tf", publish_tf, true);
+    ROS_INFO("state_from_gazebo: publish_tf=%s", publish_tf ? "true" : "false");
     tfState_BASE_sub = node.subscribe<gazebo_msgs::LinkStates>("/gazebo/link_states", 10, callback_BASE);
     robotVelocity_BASE_frame_pub = node.advertise<nav_msgs::Odometry>("/Odometry_gazebo", 1);
 
